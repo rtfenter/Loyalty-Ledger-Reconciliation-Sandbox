@@ -82,6 +82,10 @@ function summarizeDriftCounts(accounts) {
 
 async function loadData() {
   try {
+    // Show loading state in table while reloading
+    accountsTbodyEl.innerHTML =
+      '<tr><td colspan="5" class="empty-state">Loading…</td></tr>';
+    accountsCountEl.textContent = "";
     updateSummaryBadge("idle", "Fetching sample ledger and balances from static JSON files…");
 
     const [ledgerRes, balancesRes] = await Promise.all([
@@ -383,7 +387,17 @@ statusFilterSelect.addEventListener("change", () => {
   renderAccountsTable();
 });
 
+// 🔁 Reload button now fully resets the scenario
 reloadBtn.addEventListener("click", () => {
+  // Reset inputs to default state
+  toleranceInput.value = "5";
+  accountFilterInput.value = "";
+  statusFilterSelect.value = "all";
+
+  // Clear detail + active selection
+  clearDetailView();
+
+  // Reload sample data and re-run reconciliation
   loadData();
 });
 
