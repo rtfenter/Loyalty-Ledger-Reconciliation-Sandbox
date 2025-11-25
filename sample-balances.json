@@ -1,0 +1,18 @@
+[
+  {
+    "account_id": "A1001",
+    "snapshot_balance": 950
+  },
+  {
+    "account_id": "A1002",
+    "snapshot_balance": 1485
+  },
+  {
+    "account_id": "A1003",
+    "snapshot_balance": 400
+  },
+  {
+    "account_id": "A1004",
+    "snapshot_balance": 0
+  }
+]
