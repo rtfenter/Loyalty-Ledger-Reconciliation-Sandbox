@@ -44,7 +44,8 @@ All logic runs client-side in JavaScript over static JSON, but represents the ki
 
 ## Demo Screenshot
 
-> (Screenshot to be added after MVP implementation.)
+<img width="2804" height="1514" alt="Screenshot 2025-11-25 at 11-28-35 Loyalty Ledger Reconciliation Sandbox" src="https://github.com/user-attachments/assets/35e023f4-7761-479d-a3bf-f852648e2ea9" />
+
 
 ---
 
@@ -163,7 +164,7 @@ https://github.com/rtfenter/Loyalty-Systems-Series
 
 ## Status  
 
-MVP design defined.  
+MVP is active and implemented.  
 Frontend implementation in progress — this sandbox will stay intentionally small and transparent, focused on reconciliation concepts, not on replicating full enterprise ledger infrastructure.
 
 ---
