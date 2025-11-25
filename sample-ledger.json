@@ -1,0 +1,75 @@
+[
+  {
+    "account_id": "A1001",
+    "timestamp": "2025-01-01T10:00:00Z",
+    "type": "earn",
+    "points_delta": 1000,
+    "description": "Welcome bonus"
+  },
+  {
+    "account_id": "A1001",
+    "timestamp": "2025-02-01T09:30:00Z",
+    "type": "earn",
+    "points_delta": 500,
+    "description": "Everyday spend"
+  },
+  {
+    "account_id": "A1001",
+    "timestamp": "2025-03-05T14:00:00Z",
+    "type": "redeem",
+    "points_delta": -600,
+    "description": "Gift card redemption"
+  },
+  {
+    "account_id": "A1001",
+    "timestamp": "2025-04-02T16:30:00Z",
+    "type": "correct",
+    "points_delta": 50,
+    "description": "Manual adjustment"
+  },
+
+  {
+    "account_id": "A1002",
+    "timestamp": "2025-01-10T11:15:00Z",
+    "type": "earn",
+    "points_delta": 2000,
+    "description": "Partner earn"
+  },
+  {
+    "account_id": "A1002",
+    "timestamp": "2025-02-12T08:45:00Z",
+    "type": "redeem",
+    "points_delta": -300,
+    "description": "Travel redemption"
+  },
+  {
+    "account_id": "A1002",
+    "timestamp": "2025-03-15T20:00:00Z",
+    "type": "expire",
+    "points_delta": -200,
+    "description": "Expiry event"
+  },
+
+  {
+    "account_id": "A1003",
+    "timestamp": "2025-01-05T09:00:00Z",
+    "type": "earn",
+    "points_delta": 800,
+    "description": "Signup offer"
+  },
+  {
+    "account_id": "A1003",
+    "timestamp": "2025-02-18T18:20:00Z",
+    "type": "redeem",
+    "points_delta": -200,
+    "description": "Reward redemption"
+  },
+
+  {
+    "account_id": "A1004",
+    "timestamp": "2025-02-01T12:00:00Z",
+    "type": "earn",
+    "points_delta": 300,
+    "description": "Base earn"
+  }
+]
