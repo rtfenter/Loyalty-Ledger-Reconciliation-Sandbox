@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Loyalty Ledger Reconciliation Sandbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="page-header">
+    <div class="page-header-inner">
+      <h1>Loyalty Ledger Reconciliation Sandbox</h1>
+      <p class="tagline">
+        Reconcile event-level activity against account balances and surface loyalty ledger drift.
+      </p>
+    </div>
+  </header>
+
+  <main class="main">
+    <!-- LEFT: CONFIG / FILTERS -->
+    <section class="panel panel-input">
+      <div class="panel-header">
+        <h2>Reconciliation Scenario</h2>
+        <div class="panel-actions">
+          <button id="reloadBtn" class="btn btn-secondary">Reload Sample Data</button>
+        </div>
+      </div>
+
+      <p class="help-text">
+        This sandbox loads a small fake ledger and balance file, reconstructs balances from events,
+        and highlights any accounts that are out of alignment.
+      </p>
+
+      <div class="field">
+        <label for="tolerance">Tolerance (points)</label>
+        <input
+          id="tolerance"
+          type="number"
+          min="0"
+          step="1"
+          value="5"
+        />
+        <p class="help-text">
+          Small differences within this range are considered "in balance" (e.g., rounding noise).
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="account-filter">Account Filter</label>
+        <input
+          id="account-filter"
+          type="text"
+          placeholder="Filter by account ID (e.g., A1001)"
+        />
+        <p class="help-text">
+          Filters the account table below. Click any account row to view its event timeline.
+        </p>
+      </div>
+
+      <div class="field">
+        <label for="status-filter">Status Filter</label>
+        <select id="status-filter" class="select">
+          <option value="all" selected>All accounts</option>
+          <option value="in-balance">In balance</option>
+          <option value="minor-drift">Minor drift</option>
+          <option value="material-mismatch">Material mismatch</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <p class="help-text">
+          Data source:
+        </p>
+        <ul class="mini-list">
+          <li><code>sample-ledger.json</code> — event-level earn/redeem/expire/correct records</li>
+          <li><code>sample-balances.json</code> — account-level balance snapshots</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- RIGHT: RESULTS -->
+    <section class="panel panel-results">
+      <div class="panel-header">
+        <h2>Reconciliation Results</h2>
+      </div>
+
+      <div class="summary">
+        <div id="summary-badge" class="summary-badge summary-badge-idle">
+          Loading ledger…
+        </div>
+        <p id="summary-text" class="summary-text">
+          Fetching sample ledger and balances from static files.
+        </p>
+      </div>
+
+      <div class="recon-legend">
+        <span class="legend-chip legend-in-balance">In balance</span>
+        <span class="legend-chip legend-minor">Minor drift</span>
+        <span class="legend-chip legend-material">Material mismatch</span>
+      </div>
+
+      <div class="accounts-section">
+        <div class="accounts-header-row">
+          <h3 class="accounts-title">Accounts</h3>
+          <span id="accounts-count" class="accounts-count"></span>
+        </div>
+        <div class="accounts-table-wrapper">
+          <table class="accounts-table">
+            <thead>
+              <tr>
+                <th>Account</th>
+                <th>Snapshot</th>
+                <th>Computed</th>
+                <th>Diff</th>
+                <th>Status</th>
+              </tr>
+            </thead>
+            <tbody id="accounts-tbody">
+              <tr>
+                <td colspan="5" class="empty-state">Loading…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="detail-section">
+        <div class="detail-header-row">
+          <h3 class="detail-title">
+            Account Detail
+          </h3>
+          <span id="detail-account-label" class="detail-account-label">
+            No account selected.
+          </span>
+        </div>
+        <p id="detail-summary" class="detail-summary">
+          Click an account in the table to see its event history and running balance.
+        </p>
+
+        <div class="detail-layout">
+          <div class="detail-events">
+            <h4 class="detail-subtitle">Event Timeline</h4>
+            <div class="events-table-wrapper">
+              <table class="events-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Type</th>
+                    <th>Delta</th>
+                    <th>Running Balance</th>
+                    <th>Description</th>
+                  </tr>
+                </thead>
+                <tbody id="events-tbody">
+                  <tr>
+                    <td colspan="5" class="empty-state">No account selected.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="detail-raw">
+            <h4 class="detail-subtitle">Reconciliation Data</h4>
+            <pre id="raw-output">No account selected.</pre>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <p>
+      Part of the
+      <a href="https://github.com/rtfenter/Loyalty-Systems-Series" target="_blank" rel="noreferrer">
+        Loyalty Systems Series
+      </a>.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
