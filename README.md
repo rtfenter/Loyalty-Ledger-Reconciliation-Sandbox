@@ -46,11 +46,11 @@ All logic runs client-side in JavaScript over static JSON, but represents the ki
 
 <img width="2804" height="1514" alt="Screenshot 2025-11-25 at 11-28-35 Loyalty Ledger Reconciliation Sandbox" src="https://github.com/user-attachments/assets/35e023f4-7761-479d-a3bf-f852648e2ea9" />
 
-
 ---
 
 ## Ledger Reconciliation Flow
 
+~~~
     [Event-Level Ledger + Balance Snapshots]
                     |
                     v
@@ -72,6 +72,7 @@ All logic runs client-side in JavaScript over static JSON, but represents the ki
                     v
         Account Drill-Down & Explanation
  (timeline + running balance + mismatch reason)
+~~~
 
 ---
 
